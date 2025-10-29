@@ -39,7 +39,7 @@ Demonstrates three separate Combine pipelines:
 
 ## Combine Concepts Demonstrated
 
-This refactored app is perfect for teaching these Combine concepts:
+This refactored app teaches these key Combine concepts:
 
 - **@Published** property wrapper
 - **Publishers.CombineLatest** - combining multiple publishers
@@ -52,7 +52,7 @@ This refactored app is perfect for teaching these Combine concepts:
 - **AnyCancellable** & **Set<AnyCancellable>** - subscription lifecycle management
 - **Reactive data flow** - no imperative update calls needed
 
-
+---
 
 The app demonstrates true reactive programming where data flows automatically through pipelines without manual intervention.  
 
