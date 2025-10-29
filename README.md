@@ -1,25 +1,25 @@
 # Temp Converter Combine
 
-This is a class demonstrate that I did using our first lab, TempConverter, and refactoring it so it uses Apple's reactive framework, Combine.  Below are the original instructions as a reference, but I have also included a `key_changes.md` file highlighting some of the changes I went over in class.  _Qapla'_
+This is a class demonstrate that I did using our first lab, TempConverter, and refactoring it so it uses Apple's reactive framework, Combine.  Below are the original instructions as a reference, but I have also included a `key_changes.md` file highlighting some of the changes I went over in class.  My hope is that you see some of the benefits of reactive programming, both for the developer and the user.  _Qapla'_
 
 ---
 
 
 ## Lab 1: TempConverter
 
-This lab will build off our TempConverter that we worked with in [67-272](67272.cmuis.net/labs/2) and in our [previous lab](67443.cmuis.net/labs/1) and turn it into a functional iOS app. The app will take some user input, convert it (if valid) from either Celsius to Fahrenheit or Fahrenheit to Celsius. There will also be a toggle switch to change the direction of the conversion and a simple "info" page that describes your app. This is what your app might look like when you are done:
+This lab will build off our TempConverter that we worked with in [67-272](67272.cmuis.net/labs/2) and turn it into a functional iOS app. The app will take some user input, convert it (if valid) from either Celsius to Fahrenheit or Fahrenheit to Celsius. There will also be a toggle switch to change the direction of the conversion and a simple "info" page that describes your app. This is what your app might look like when you are done:
 
 <p float="left" align="center">
   <img src="https://i.imgur.com/9vU4pSA.png" width="50%"/>
 </p>
 
 
-One of the main goals of this lab is to give you an introduction into [SwiftUI](https://developer.apple.com/xcode/swiftui/). SwiftUI is another way of building user interfaces in iOS (other than the Storyboards you used last week in lab).
+One of the main goals of this lab is to give you an introduction into [SwiftUI](https://developer.apple.com/xcode/swiftui/). SwiftUI is another way of building user interfaces in iOS (other than the Storyboards mentioned in class and in the alternate write up from the class exercise).
 
 Part 1: App creation and model building
 ---
 
-1. Create a new project, a `Single View App`. The Product Name Should be `TempConverterApp`. Select `SwiftUI` for the Use Interface. (Do not check `Core Data`, `Unit Tests` or `UI Tests`.)
+1. Create a new project, an `App` (Make sure you have iOS selected as your platform). The Product Name Should be `TempConverterApp`. Select `SwiftUI` for the Interface. (Do not select any options for 'Storage' and do not select the checkbox 'Include Tests')
 
 1. Create three groups (folders): one called Models, one called Controllers, and the last called Views.  Move the ContentView and the tempconverterApp into the Views folder.
 
@@ -33,7 +33,7 @@ Part 1: App creation and model building
 
    (There is a partial model outline at the end of the lab if you are stuck, but I know you can figure out an appropriate model on your own given your previous experience, and I would encourage you to do so to maximize your learning.)
 
-3. After you have built your model, check out the boilerplate code at the bottom of the instructions. This time, we separate out the functions for Fahrenheit -> Celsius and Celsius -> Fahrenheit for fewer conditionals in our code and more readable logic. You don't have to implement your model like this, but at least take a look to get a sense of the differences in architecture between this model and the one we wrote last week.
+3. After you have built your model, check out the boilerplate code at the bottom of the instructions just to confirm you are on the right path. This time, we separate out the functions for Fahrenheit -> Celsius and Celsius -> Fahrenheit for fewer conditionals in our code and more readable logic. You don't have to implement your model like this, but at least take a look to get a sense of the differences in architecture between this model and the one we wrote last week.
 
 
 Part 2 -- Initial interface building
@@ -84,6 +84,7 @@ Part 2 -- Initial interface building
         Spacer()
       }
       ```
+*note that you may get an error as follows: "Cannot convert value of type 'String' to expected argument type 'Binding<String>'". This is because the `TextField` in SwiftUI requires a `Binding<String>` to manage the input. For the time being you can declare a temporary variable to allow the build to go through e.g. `@State private var inputTemp: String = ""`. This still won't allow the view to build... hint hint let's recall how we use `$` to create bindings.
 
 10. Play around with the styling (especially with the SwiftUI Inspector) to make the app a little more appealing. You can change the background color to yellow by creating a `ZStack` outside of your main `VStack` and adding the line `Color.blue.edgesIgnoringSafeArea(.all).opacity(0.80)` just inside the `ZStack` before all the main content. (Hint: You can chain `.opacity` to the end of the previous statement to make the color less intense.) Make sure to change the AppIcon to the icons provided in [this folder](http://67442.cmuis.net/files/67442/lab4/resources_for_lab_4.zip). (Ignore everything except the AppIcon files; see [last weeks's lab](https://67443.cmuis.net/labs/1) if you don't remember how to set the AppIcon.) Try to get your app to look something like this:
 
